@@ -1,0 +1,29 @@
+server:
+  port: ${SERVER_PORT:9091}
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: inicis-mock-server
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+# Mock Server 설정
+inicis:
+  mock:
+    # 테스트용 MID 목록 (실제로는 검증하지 않음)
+    valid-mids:
+      - CIC12345678
+      - CIC_TEST_001
+    # 자동 성공 모드 (false면 수동으로 성공/실패 선택 가능)
+    auto-success: false
+    # 인증 지연 시간 (밀리초)
+    auth-delay-ms: 2000
+
+logging:
+  level:
+    com.example.inicis: DEBUG
+    org.springframework.web: INFO
