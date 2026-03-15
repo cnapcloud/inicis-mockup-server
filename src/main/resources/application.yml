@@ -25,5 +25,19 @@ inicis:
 
 logging:
   level:
-    com.example.inicis: DEBUG
-    org.springframework.web: INFO
+    ROOT: info
+    org.springframework: INFO
+    net.ttddyy.dsproxy.listener: DEBUG
+  pattern:
+    console: "[%d{yyyy-MM-dd HH:mm:ss}] %-5level ${PID:-} [${spring.application.name:},%X{traceId:-},%X{spanId:-}] [%8.8thread] %-40.40logger{36} : %msg%n"
+
+management:
+  metrics.tags.application: ${spring.application.name}
+  endpoints:
+    prometheus:  
+     enabled: true 	
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: ALWAYS
