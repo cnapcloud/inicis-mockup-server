@@ -2,15 +2,15 @@
 
 Keycloak 연동 테스트를 위한 KG 이니시스 간편인증 시뮬레이터입니다.
 
-## 📋 기능
+## 기능
 
-- ✅ **인증 성공/실패 선택**: UI에서 성공 또는 실패를 선택하여 테스트
-- 👥 **테스트 사용자 제공**: 5명의 미리 정의된 테스트 사용자
-- ✏️ **커스텀 입력**: 사용자 정보를 직접 입력하여 테스트
-- 🔍 **상세 로깅**: 모든 요청과 응답을 콘솔에 로깅
-- 🎨 **실제와 유사한 UI**: 실제 이니시스와 유사한 인증 화면
+- **인증 성공/실패 선택**: UI에서 성공 또는 실패를 선택하여 테스트
+- **테스트 사용자 제공**: 5명의 미리 정의된 테스트 사용자
+- **커스텀 입력**: 사용자 정보를 직접 입력하여 테스트
+- **상세 로깅**: 모든 요청과 응답을 콘솔에 로깅
+- **실제와 유사한 UI**: 실제 이니시스와 유사한 인증 화면
 
-## 🚀 실행 방법
+## 실행 방법
 
 ### 1. 로컬 실행
 
@@ -42,7 +42,7 @@ docker run -p 9090:9090 inicis-mock-server
 http://localhost:9090
 ```
 
-## ⚙️ 설정
+## 설정
 
 ### application.yml
 
@@ -64,7 +64,7 @@ inicis:
     auth-delay-ms: 2000
 ```
 
-## 🔗 Keycloak 연동 설정
+## Keycloak 연동 설정
 
 ### 1. Keycloak Admin Console 설정
 
@@ -89,7 +89,7 @@ Keycloak이 자동으로 생성하는 Redirect URI:
 http://localhost:8080/realms/{realm-name}/broker/inicis/endpoint
 ```
 
- ## 📡 API 엔드포인트
+## API 엔드포인트
 
 ### GET /auth
 
@@ -113,7 +113,7 @@ http://localhost:9090/auth?mid=CIC12345678&returnUrl=http://localhost:8080/realm
 
 인증 처리 엔드포인트 (UI에서 성공/실패 선택 시 호출)
 
-## 👥 테스트 사용자 목록
+## 테스트 사용자 목록
 
 | 이름 | 생년월일 | 휴대폰 번호 |
 |-----|---------|-----------|
@@ -123,7 +123,7 @@ http://localhost:9090/auth?mid=CIC12345678&returnUrl=http://localhost:8080/realm
 | 박민수 | 19881212 | 01099998888 |
 | 정수진 | 19920707 | 01011112222 |
 
-## 🔄 인증 플로우
+## 인증 플로우
 
 ```
 1. Keycloak 로그인 페이지 → "KG 이니시스 간편인증" 클릭
@@ -146,7 +146,7 @@ http://localhost:9090/auth?mid=CIC12345678&returnUrl=http://localhost:8080/realm
 7. 로그인 완료
 ```
 
-## 📊 응답 형식
+## 응답 형식
 
 ### 성공 응답
 
@@ -172,7 +172,7 @@ returnUrl?resultCode=9999
   &state=xyz789
 ```
 
-## 🧪 테스트 시나리오
+## 테스트 시나리오
 
 ### 1. 정상 인증 테스트
 
@@ -200,7 +200,7 @@ returnUrl?resultCode=9999
 2. "인증 성공" 클릭
 3. 입력한 정보가 Keycloak에 올바르게 매핑되는지 확인
 
-## 🔍 로그 확인
+## 로그 확인
 
 Mock Server는 모든 요청과 응답을 상세하게 로깅합니다:
 
@@ -223,7 +223,7 @@ Generating SUCCESS response - CI: a1b2c3d4..., name: 홍길동
 Redirecting to callback URL: http://localhost:8080/realms/master/broker/inicis/endpoint?resultCode=0000&...
 ```
 
-## 🐛 트러블슈팅
+## 트러블슈팅
 
 ### Mock Server에 접속되지 않음
 
@@ -247,7 +247,7 @@ sudo ufw allow 9090
 - 실제 환경에서도 동일한 사용자는 항상 같은 CI를 받지만, Mock Server는 매번 새로운 CI를 생성합니다
 - 테스트 시 같은 CI를 원한다면 코드 수정 필요
 
-## 📦 프로젝트 구조
+## 프로젝트 구조
 
 ```
 inicis-mock-server/
@@ -278,7 +278,7 @@ inicis-mock-server/
                 └── error.html
 ```
 
-## 🛠️ 개발 환경
+## 개발 환경
 
 - Java 17
 - Spring Boot 3.2.0
@@ -286,20 +286,16 @@ inicis-mock-server/
 - Lombok
 - Maven
 
-## 📝 주의사항
+## 주의사항
 
 - **테스트 전용**: 이 서버는 개발/테스트 환경에서만 사용하세요
 - **실제 인증 없음**: 실제 본인확인은 수행되지 않습니다
 - **보안**: 실제 환경에서는 절대 사용하지 마세요
 
-## 🤝 기여
+## 기여
 
 이슈 및 Pull Request 환영합니다!
 
-## 📄 라이선스
+## 라이선스
 
 MIT License
-
-## 🔗 관련 프로젝트
-
-- [keycloak-inicis-provider](../keycloak-inicis-provider) - Keycloak Identity Provider 구현

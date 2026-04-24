@@ -15,7 +15,7 @@ build: ## Maven으로 JAR 빌드 (mvn clean package)
 docker-build: build ## 로컬용 단일 플랫폼 Docker 이미지 빌드
 	docker buildx build -f Dockerfile -t $(IMAGE) --load .
 
-publish: build ## linux/amd64 + linux/arm64 멀티아키텍처 빌드 후 Docker Hub 푸시
+push: build ## linux/amd64 + linux/arm64 멀티아키텍처 빌드 후 Docker Hub 푸시
 	export BUILDX_NO_DEFAULT_ATTESTATIONS=1 && \
 	export DOCKER_BUILDKIT=1 && \
 	docker buildx build -f Dockerfile --platform linux/amd64,linux/arm64 -t $(IMAGE) --push .
